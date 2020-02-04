@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
+using System;
 using System.Diagnostics;
-using System.Threading;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
 
 namespace ImageDivider
 {
@@ -27,34 +20,37 @@ namespace ImageDivider
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			Bitmap image;
 			if (openFileDialog1.FileNames == null)
 			{
 				MessageBox.Show("Please select images");
 				return;
 			}
 			int fileCount = openFileDialog1.FileNames.Length * 2;
-			int index = 0;
-			string newFileName = String.Empty;
+			int index = 1;
+			string newFileName = openFileDialog1.FileNames[0];
+			string outputDirectoryName = Path.Combine(Path.GetDirectoryName(newFileName), "Splitter output");
+			Directory.CreateDirectory(outputDirectoryName);
+			SplitAllImages(ref fileCount, ref index, outputDirectoryName);
+			MessageBox.Show($"All files successfully created.");
+			Process.Start("explorer.exe", outputDirectoryName);
+		}
+
+		private void SplitAllImages(ref int fileCount, ref int index, string outputDirectoryName)
+		{
+			Bitmap image;
 			foreach (var fileName in openFileDialog1.FileNames)
 			{
 				image = new Bitmap(fileName);
-				newFileName = fileName;
-				newFileName = newFileName.Remove(newFileName.LastIndexOf('\\'));
-				newFileName = newFileName + "\\Splitter output";
 				RectangleF rect1 = new RectangleF(0, 0, image.Width / 2, image.Height);
 				RectangleF rect2 = new RectangleF(image.Width / 2, 0, image.Width / 2, image.Height);
 				System.Drawing.Imaging.PixelFormat format = image.PixelFormat;
 				Bitmap left = image.Clone(rect1, format);
 				Bitmap right = image.Clone(rect2, format);
-				Directory.CreateDirectory(newFileName);
-				left.Save(newFileName + "\\" + fileCount + ".png");
+				left.Save(Path.Combine(outputDirectoryName, Path.ChangeExtension(fileCount.ToString(), "png")));
 				--fileCount;
-				right.Save(newFileName + "\\" + index + ".png");
+				right.Save(Path.Combine(outputDirectoryName, Path.ChangeExtension(index.ToString(), "png")));
 				index++;
 			}
-			MessageBox.Show($"All files successfully created.");
-			Process.Start("explorer.exe", newFileName);
 		}
 	}
 }
