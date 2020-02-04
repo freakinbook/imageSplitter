@@ -1,0 +1,10 @@
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\bin\Debug\ImageDivider.exe.config
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\bin\Debug\ImageDivider.exe
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\bin\Debug\ImageDivider.pdb
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.csprojAssemblyReference.cache
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.Form1.resources
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.Properties.Resources.resources
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.csproj.GenerateResource.cache
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.csproj.CoreCompileInputs.cache
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.exe
+C:\Users\d.zviagin\source\repos\ImageDivider\ImageDivider\obj\Debug\ImageDivider.pdb
